@@ -1,0 +1,68 @@
+# Render the vector icon geometry with Windows GDI+; no external dependencies.
+Add-Type -AssemblyName System.Drawing
+$canvas = New-Object System.Drawing.Bitmap 1024,1024
+$graphics = [System.Drawing.Graphics]::FromImage($canvas)
+$graphics.SmoothingMode = [System.Drawing.Drawing2D.SmoothingMode]::AntiAlias
+$graphics.ScaleTransform(8,8)
+$coral = New-Object System.Drawing.SolidBrush ([System.Drawing.ColorTranslator]::FromHtml('#FF624D'))
+$cream = New-Object System.Drawing.SolidBrush ([System.Drawing.ColorTranslator]::FromHtml('#FFF5E8'))
+$tile = New-Object System.Drawing.Drawing2D.GraphicsPath
+$tile.AddArc(2,2,54,54,180,90)
+$tile.AddArc(72,2,54,54,270,90)
+$tile.AddArc(72,72,54,54,0,90)
+$tile.AddArc(2,72,54,54,90,90)
+$tile.CloseFigure()
+$graphics.FillPath($coral,$tile)
+$tab = New-Object System.Drawing.Drawing2D.GraphicsPath
+$tab.AddLine(24,98,24,62)
+$tab.AddBezier(24,62,24,60,24,60,25,58)
+$tab.AddLine(25,58,33,46)
+$tab.AddBezier(33,46,35,43,35,43,39,43)
+$tab.AddLine(39,43,61,43)
+$tab.AddBezier(61,43,64,43,64,43,66,47)
+$tab.AddLine(66,47,77,65)
+$tab.AddBezier(77,65,78,67,78,67,81,67)
+$tab.AddLine(81,67,101,67)
+$tab.AddBezier(101,67,105,67,105,67,105,71)
+$tab.AddLine(105,71,105,98)
+$tab.AddBezier(105,98,105,101,105,101,102,101)
+$tab.AddLine(102,101,27,101)
+$tab.AddBezier(27,101,24,101,24,101,24,98)
+$tab.CloseFigure()
+$pen = New-Object System.Drawing.Pen ($cream,8)
+$pen.LineJoin = [System.Drawing.Drawing2D.LineJoin]::Round
+$graphics.DrawPath($pen,$tab)
+$star = New-Object System.Drawing.Drawing2D.GraphicsPath
+$star.AddBezier(96,28,97,28,97,28,98,31)
+$star.AddLine(98,31,102,41)
+$star.AddLine(102,41,112,45)
+$star.AddBezier(112,45,115,46,115,46,112,48)
+$star.AddLine(112,48,102,52)
+$star.AddLine(102,52,98,62)
+$star.AddBezier(98,62,96,65,96,65,94,62)
+$star.AddLine(94,62,90,52)
+$star.AddLine(90,52,80,48)
+$star.AddBezier(80,48,77,46,77,46,80,45)
+$star.AddLine(80,45,90,41)
+$star.AddLine(90,41,94,31)
+$star.AddBezier(94,31,95,28,95,28,96,28)
+$star.CloseFigure()
+$graphics.FillPath($cream,$star)
+$graphics.Dispose()
+$canvas.Save((Join-Path $PSScriptRoot 'tabmaxxing-source.png'),[System.Drawing.Imaging.ImageFormat]::Png)
+foreach ($size in @(16,32,48,128)) {
+    $output = New-Object System.Drawing.Bitmap $size,$size
+    $renderer = [System.Drawing.Graphics]::FromImage($output)
+    $renderer.InterpolationMode = [System.Drawing.Drawing2D.InterpolationMode]::HighQualityBicubic
+    $renderer.DrawImage($canvas,0,0,$size,$size)
+    $output.Save((Join-Path $PSScriptRoot "icon$size.png"),[System.Drawing.Imaging.ImageFormat]::Png)
+    $renderer.Dispose()
+    $output.Dispose()
+}
+$canvas.Dispose()
+$pen.Dispose()
+$coral.Dispose()
+$cream.Dispose()
+$tile.Dispose()
+$tab.Dispose()
+$star.Dispose()

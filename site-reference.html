@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>Singapore Physics League | SPhL</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;800&display=swap"
+            rel="stylesheet"
+        />
+        <!-- Stylesheets -->
+        <link rel="stylesheet" type="text/css" href="shared.css" />
+        <link rel="stylesheet" type="text/css" href="index.css" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        />
+
+        <link rel="icon" href="favicon.ico" />
+        <meta name="title" content="Singapore Physics League (SPhL)" />
+        <meta
+            name="description"
+            content="A 3-hour online competition, where teams of students race to solve fun physics problems. Your perfect opportunity to talk all-things-physics and “jam” with your fellow physics enthusiasts!"
+        />
+        <meta property="og:title" content="Singapore Physics League (SPhL)" />
+        <meta
+            property="og:description"
+            content="A 3-hour online competition, where teams of students race to solve fun physics problems. Your perfect opportunity to talk all-things-physics and “jam” with your fellow physics enthusiasts!"
+        />
+        <meta property="og:image" content="res/og_image.png" />
+        <meta property="og:url" content="sgphysicsleague.org" />
+
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+        <!-- Tippy.js -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/dist/tippy.umd.min.js"></script>
+        <link
+            href="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/dist/tippy.min.css"
+            rel="stylesheet"
+        />
+
+        <!-- confetti <3 -->
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+
+        <script src="shared.js"></script>
+        <script src="api.js"></script>
+        <script type="text/javascript">
+            restrictAccess(-1);
+        </script>
+    </head>
+
+    <body>
+        <div id="announcementContainer" style="position: sticky"></div>
+        <main>
+            <div class="splash">
+                <div id="main-splash-bg"></div>
+                <div class="splash-text">
+                    <div style="flex: 2">
+                        <div
+                        class="splash-title-main header-xl"
+                        style="text-align: left; display: flex"
+                        >
+                        Singapore Physics League
+                    </div>
+                    <div class="splash-desc header-s">
+                        A fast-paced team contest to solve fun physics
+                        problems
+                    </div>
+                    <div class="splash-title-sub header-m">
+                        We'll be back in 2027!
+                    </div>
+                    <a class="splash-archive-link" href="archives/2026">
+                        <i class="material-icons">history</i>
+                        Time travel to SPhL 2026
+                    </a>
+                    </div>
+                </div>
+            </div>
+
+            <section class="info info-split" id="what">
+                <div class="info-main">
+                    <div class="info-img">
+                        <img src="res/speech.png" />
+                    </div>
+                    <div class="info-desc">
+                        <div class="info-header header-l">
+                            What is Physics League?
+                        </div>
+                        The <b>Singapore Physics League (SPhL)</b> is a
+                        team-based competition, where teams of 3 - 5 students
+                        race to solve fun physics problems together.
+                        <br /><br />
+                        Learning and doing physics is a team sport - gather your
+                        group of fellow physics enthusiasts to participate as a
+                        team and discuss interesting physics together!
+                        Learn more
+                        <a href="/about" target="_blank">about us</a>.
+                        <br /><br />
+                    </div>
+                    <div id="competition-rounds">
+                        <div class="info-header header-l">
+                            Two rounds of competition
+                        </div>
+                        <div class="round-list">
+                            <article class="round-card round-online">
+                                <span class="round-number">Round 1</span>
+                                <h3 class="header-s">SPhL Online</h3>
+                                <p>
+                                    A 3-hour open-book* online competition, 
+                                    for both Competitive and Casual tracks. 
+                                    Competitive track teams can qualify 
+                                    for the SPhL Grand Finals.
+                                </p>
+                            </article>
+                            <article class="round-card round-finals">
+                                <span class="round-number">Round 2</span>
+                                <h3 class="header-s">SPhL Grand Finals (since 2025)</h3>
+                                <p>
+                                    A full-day in-person event to determine 
+                                    the final team rankings in each category 
+                                    (Junior / Senior). All Bronze awards and 
+                                    above will be determined from this round.
+                                </p>
+                            </article>
+                        </div>
+                        <div class="round-note">
+                            <br />
+                            *With the exception of Generative AI Tools in the Competitive Track.
+                            <span class="ai-statement-cta">
+                                <span class="rules-cta">Read our
+                                    <a href="/rules#dnd" target="_blank">
+                                        <i class="material-icons" aria-hidden="true">info</i>
+                                        Rules</a>
+                                </span>
+                                and
+                                <a href="/ai-statement-2026" target="_blank">
+                                    <i class="material-icons" aria-hidden="true">description</i>
+                                    2026 AI Policy Statement</a>.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="info info-split" id="competition-tracks">
+                <div class="info-main">
+                    <div class="table-container track-comparison">
+                        <table aria-label="Competition track comparison">
+                            <thead>
+                                <tr>
+                                    <th class="track-competitive" scope="col">
+                                        <span class="track-table-heading">
+                                            <i class="material-icons" aria-hidden="true">emoji_events</i>
+                                            Competitive
+                                        </span>
+                                    </th>
+                                    <th class="track-casual" scope="col">
+                                        <span class="track-table-heading">
+                                            <i class="material-icons" aria-hidden="true">groups</i>
+                                            Casual
+                                        </span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="track-competitive">
+                                        <h4>Best for</h4>
+                                        <p>
+                                            Teams looking for the full competitive
+                                            experience and a chance to qualify for
+                                            the SPhL Grand Finals. 
+                                            <b>
+                                                <a
+                                                class="track-warning-link"
+                                                href="/rules#dnd"
+                                                target="_blank"
+                                                
+                                                >Gen AI tools are banned
+                                                <i
+                                                    class="material-icons"
+                                                    aria-hidden="true"
+                                                    >open_in_new</i
+                                                >        
+                                                </a>
+                                            </b>
+                                        </p>
+                                    </td>
+                                    <td class="track-casual">
+                                        <h4>Best for</h4>
+                                        <p>
+                                            Anyone who wants to learn new physics and
+                                            test their skills on the same
+                                            SPhL Online competition portal, 
+                                            with relaxed rules and no stakes!
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="track-competitive">
+                                        <h4>Who can join</h4>
+                                        <p>
+                                            Students in Singapore secondary schools
+                                            or pre-university institutions (or equivalent).
+                                        </p>
+                                    </td>
+                                    <td class="track-casual">
+                                        <h4>Who can join</h4>
+                                        <p>
+                                            Everyone, including overseas and university
+                                            students, alumni, non-students, and teachers.
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="track-competitive">
+                                        <h4>Categories</h4>
+                                        <ul class="track-categories">
+                                            <li>
+                                                <b>Junior:</b> All team members are
+                                                in secondary school
+                                            </li>
+                                            <li>
+                                                <b>Senior:</b> All team members are
+                                                in JC, MI, Polytechnic, ITE, or
+                                                equivalent pre-uni institutions
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td class="track-casual">
+                                        <h4>What to expect</h4>
+                                        <p>
+                                            Relaxed rules with no awards, rankings,
+                                            or Grand Finals. All forms of assistance
+                                            are allowed, including generative AI tools.
+                                            A Certificate of Participation will be provided.
+                                        </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="info-desc">
+                        <div class="info-header header-l"><span class="new-label">[NEW!]</span>&nbsp;Two Tracks</div>
+                        <p>
+                            SPhL now offers two ways to take part:
+                            <b>Competitive</b> and <b>Casual</b> Tracks.
+                            <br/> <br/>
+                            The
+                            <b class="track-competitive-accent"
+                                >Competitive Track</b
+                            >
+                            offers the classic SPhL experience,
+                            with published and verified team rankings and the chance 
+                            to qualify for SPhL Grand Finals and win awards.
+                            <br/> <br/>
+                            Since 2026, the
+                            <b class="track-casual-accent">Casual Track</b>
+                            has offered an alternative,
+                            zero-stakes means for anyone to participate in SPhL. Experience the same
+                            thrill and excitement of SPhL; test your skills and learn new physics
+                            as a team!
+                            <br /><br/>
+                            See
+                            <a class="track-rules-link" href="/rules#format_tracks" target="_blank">
+                                <i class="material-icons" aria-hidden="true">info</i>
+                                Rules</a>
+                            for a more detailed explanation.
+                        </p>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- <section class="info info-grid" id="details">
+                <div class="info-main">
+                    <div class="info-time">
+                        <div class="info-subheader header-m">
+                            <i class="material-icons">schedule</i>When and
+                            where?
+                        </div>
+
+                        SPhL 2026 Online will be held on
+                        <b
+                            >27 June 2026 (Saturday), from
+                            <span style="color: var(--danger)"
+                                ><b>[NEW!]</b></span
+                            >
+                            2:00 PM to 5:00 PM</b
+                        >. As the competition is fully virtual, you and your
+                        team may be physically located at any spatial
+                        coordinates of your choice! <br /><br />
+
+                        All you need is a computing device with a modern web
+                        browser and a stable Internet connection in order to
+                        gain access to our online platform. You must log in to
+                        view problems and submit answers.
+                        <br /><br />
+
+                        <span style="color: var(--danger)"><b>[NEW!]</b></span>
+                        Selected teams from the Competitive track of
+                        <b>BOTH</b> SPhL (Junior) and SPhL (Senior) will be
+                        invited to <b>SPhL 2026 Grand Finals</b> at the
+                        <b>Singapore University of Technology and Design</b>, on
+                        18 July and 25 July. More details will be published on
+                        the
+                        <a href="https://finals.sgphysicsleague.org"
+                            >SPhL Grand Finals website</a
+                        >
+                        - stay tuned for that!
+                    </div>
+
+                    <div class="info-flowchart">
+                        <img
+                            src="res/SPhL Online Flowchart.svg"
+                            id="flowchart"
+                        />
+                    </div>
+
+                    <div class="info-track-table">
+                        <div class="info-subheader header-m">
+                            <i class="material-icons">groups</i>Who can
+                            participate?
+                        </div>
+                        For SPhL 2026 Online, we will split the competition into
+                        2 tracks: Competitive and Casual
+                        <span style="color: var(--danger)"><b>[NEW!]</b></span
+                        >. See <a href="/rules">Rules</a> for a more detailed
+                        explanation.
+                        <br />
+                        <br />
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>COMPETITIVE</th>
+                                        <th>CASUAL</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            Compete against other teams and stand a chance
+                                            to win awards! This includes both SPhL Online and
+                                            – if you are selected – the SPhL Grand Finals.
+                                            This is only open to students currently studying in a
+                                            Singapore secondary school or pre-university
+                                            institution (or equivalent). There are two categories
+                                            in this track:
+                                            <br/>
+                                            <br/>
+                                            <b>SPhL (Junior)</b>: for teams whose members are all
+                                            in secondary schools
+                                            <br/>
+                                            <b>SPhL (Senior)</b>: for teams whose members are all
+                                            in pre-university institutions (Junior College,
+                                            Millennia Institute, Polytechnic, ITE, or equivalent)
+                                            <br/>
+                                            <br/>
+                                            Teams must comprise of 3, 4 or 5 students. Your
+                                            team can comprise students from different schools.
+
+                                            <br/>
+                                            <br/>
+                                            <span style="color: var(--danger)"
+                                                ><b>[NEW!]</b></span
+                                            >
+                                            For verification purposes,
+                                            you are required to submit your workings by
+                                            <b>27 June 6pm</b>.
+                                        </td>
+                                        <td>
+                                            An opportunity for fun and learning, but with no
+                                            awards or rankings. You only participate in SPhL
+                                            Online, and are not eligible for SPhL Grand Finals.
+                                            This is open to everyone, including students in
+                                            other countries, university students, graduated
+                                            alumni, non-students, teachers, etc.
+                                            <br/>
+                                            <br/>
+                                            <br/>
+                                            <br/>
+                                            The Casual Track will be held asynchronously after
+                                            the Competitive Track ends, from 27 June 5pm to
+                                            28 June 5pm.
+                                            Rules are relaxed in the Casual Track. Teams will
+                                            be allowed to use any and all forms of assistance,
+                                            including generative AI tools, which are banned in
+                                            the Competitive Track.
+                                            <br/>
+                                            <br/>
+                                            <br/>
+                                            <br/>
+                                            See <a href="/rules">Rules</a> for a more detailed explanation.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section> -->
+
+            <section class="info info-grid" id="how">
+                <div class="info-header header-l">How it works (SPhL Online)</div>
+                <div class="info-main">
+                    <div>
+                        <div class="info-subheader header-m">
+                            <i class="material-icons">settings</i>Mechanics
+                        </div>
+                        At any time, your team will be given access to 4
+                        problems. You can submit your answer for any of these
+                        problems whenever you wish, and the website will give
+                        instant feedback on it:
+                        <br /><br />
+                        <i class="material-icons inline-icons success">done</i>
+                        <b class="success">If your answer is correct</b>, you
+                        gain points, and you will be prompted to select a new
+                        problem to unlock. <br /><br />
+                        <i class="material-icons inline-icons danger">close</i>
+                        <b class="danger">If your answer is incorrect</b>, you
+                        can re-attempt the problem for partial points.
+                    </div>
+                    <div>
+                        <div class="info-subheader header-m">
+                            <i class="material-icons">quiz</i>Problems
+                        </div>
+                        Problems vary greatly in difficulty level; some are
+                        comparable to questions from your school exams, others
+                        are closer to national olympiad questions or even
+                        beyond. The examinable scope will follow the
+                        <a
+                            href="https://www.ipho-new.org/statutes-syllabus/#syllabus"
+                            target="_blank"
+                            >IPhO syllabus</a
+                        >. <br /><br />
+                        There will be some differences in the problems for each
+                        category (Junior / Senior).
+                        <br /><br />
+                        For a rough sense of the style of problems,
+                        <a href="/archives" target="_blank"
+                            ><b>view past years' SPhL problems here</b></a
+                        >.
+                    </div>
+                    <div>
+                        <div class="info-subheader header-m">
+                            <i class="material-icons">lightbulb</i>Strategy
+                        </div>
+                        You should communicate and coordinate closely with your
+                        teammates, but there should be no communication with
+                        anyone else during the competition (e.g. family members,
+                        friends in other teams, etc.).
+                        <br /><br />
+                        This competition is completely "open-book", so 
+                        you are allowed to use any online/offline 
+                        reference materials or even
+                        computational tools at your disposal,
+                        <b class="danger"><a href="/rules#dnd" target="_blank">
+                            except for Gen AI tools</a></b>.
+                        This is a great chance to learn
+                        some new physics on the fly!
+                        <br /><br />
+                        Devise a team strategy to tackle the problems
+                        effectively and efficiently!
+                    </div>
+                </div>
+                <div class="info-footer header-xs">
+                    Learn more about this (and Grand Finals) at
+                    <i class="material-icons">info</i>
+                    <a href="/rules" target="_blank"> Rules </a>.
+                </div>
+            </section>
+            <section class="info info-split" id="why">
+                <div class="info-main">
+                    <div class="info-desc">
+                        <div class="info-header header-l">
+                            Why should I participate?
+                        </div>
+                        For the fun of it! The competition will be thrilling and
+                        dynamic - similar to a game. You can look forward to
+                        many exciting elements, like progressive unlocking of
+                        problems, live leaderboards, and
+                        <i>Half Hour Rush</i>. <br /><br />
+                        The competition will require lots of collaboration and
+                        is designed to stimulate fruitful and enjoyable
+                        discussions of physics. Hopefully, you will find our
+                        problems innovative, interesting and intellectually
+                        stimulating!
+                        <br /><br />
+                        You also stand a chance to win awards and glory!
+                        <br /><br />
+                        Are you excited? &nbsp;
+                        <button class="btn-pri btn-inline" id="confetti_btn">
+                            🎉 I'M EXCITED!
+                        </button>
+                    </div>
+                    <div class="info-img">
+                        <img src="res/mascot-happy-combined.png" />
+                    </div>
+                </div>
+            </section>
+            <section class="info" id="register">
+                <div class="info-header header-l">
+                    <i class="material-icons">assignment</i>Register for Physics
+                    League!
+                </div>
+                <div class="info-main">
+                    <!-- Once you have chosen your dream team and decided on a team
+                    name, we just need one member of your team to fill in the
+                    registration form!
+                    <br /><br />
+                    There is no limit to how many students from each school can
+                    participate. So, don't be shy - go ahead and register!
+                    <br /><br />
+                    
+                    The deadline for registration is
+                    <b>10 May 2026 (Sunday)</b>, at 11.59 PM. Only one
+                    registration is required for each team i.e. it is not
+                    necessary for every team member to fill up the registration
+                    form. <br /><br /> -->
+                    Registration is currently closed. We will be back in February 2027! 
+                    <br /><br />
+                    <div class="sect-extra" id="for-multischool-teams-target">
+                        <div class="extra-header">
+                            <div class="extra-header-text">
+                                If your dream team comprises students from
+                                different schools…
+                            </div>
+                        </div>
+                        <div class="extra-body">
+                            Such an arrangement is perfectly fine by us!
+                            <br /><br />
+                            <b
+                                >Make sure you register as a team with your team
+                                members from other schools.
+                            </b>
+                            <br /><br />
+                            For example, suppose your team comprises 2 members
+                            from School X, 2 members from School Y, and 1 member
+                            from School Z. One member of this team simply fills
+                            up the registration form and includes all 5 of these
+                            students in the form. The admin personnel in the OT
+                            will receive this information and compile a list of
+                            students participating in SPhL to send to the
+                            respective schools (in this case, School X, School Y
+                            and School Z). Each school will be informed that
+                            these students will be participating with team
+                            members from other schools.
+                        </div>
+                    </div>
+                    <br />
+                    <div class="sect-extra" id="for-multilevel-teams-target">
+                        <div class="extra-header">
+                            <div class="extra-header-text">
+                                If your dream team comprises students from
+                                different levels…
+                            </div>
+                        </div>
+                        <div class="extra-body">
+                            This is permitted,
+                            <b
+                                >as long as your team members' categories do not
+                                mix.</b
+                            >
+                            In other words: <br /><br />
+                            <i class="material-icons inline-icons success"
+                                >done</i
+                            >
+                            Secondary school students from different levels are
+                            permitted to join SPhL (Junior) as a single team.
+                            <br />
+                            <i class="material-icons inline-icons success"
+                                >done</i
+                            >
+                            Junior college or Polytechnic students from
+                            different levels are permitted to join SPhL (Senior)
+                            as a single team.
+                            <br />
+                            <i class="material-icons inline-icons danger"
+                                >close</i
+                            >
+                            However, a team <b>cannot</b> comprise both
+                            secondary school and junior college / polytechnic
+                            students. <br /><br />
+                            As long as these conditions are met, having members
+                            from different levels is permitted.
+                            <br /><br />
+                            No special procedure is needed for registration
+                            here, simply indicate each team member's level in
+                            the registration form accurately.
+                        </div>
+                    </div>
+                    <br />
+                    <div class="sect-extra" id="for-teachers-target">
+                        <div class="extra-header">
+                            <div class="extra-header-text">
+                                If you are a teacher looking to register
+                                students from your school…
+                            </div>
+                        </div>
+                        <div class="extra-body">
+                            First of all, thank you for your support in
+                            facilitating the registration process for SPhL! Our
+                            efforts would not reach as many students without
+                            your invaluable assistance, and we are immensely
+                            grateful for it.
+                            <br /><br />
+                            We will send an email to the HOD (Science) through MOE in February 2027, with detailed
+                            instructions for registration. Please direct your
+                            students to form teams to fill in the registration
+                            form on our website. 
+                            <!-- The deadline for submission is
+                            <b>10 May 2027 (Sunday)</b>, at 11.59 pm.
+                            <br /><br /> -->
+                            If you would like to know more, or have us contact you directly,
+                            please drop us an email via
+                            <a href="/cdn-cgi/l/email-protection#9cfff3f2e8fdffe8dceffbecf4e5eff5ffeff0f9fdfbe9f9b2f3eefb">contact@<wbr />sgphysicsleague<wbr />.org</a
+                            >.
+                            Should you have any technical queries regarding the
+                            registration procedure, or any other aspect of SPhL,
+                            feel free to ask too.
+                        </div>
+                    </div>
+                    <br />
+                    <!-- A few weeks after the registration deadline, we will send
+                    more information to your registered email address - check
+                    your spam folder too! Please email us at
+                    <a href="mailto:contact@sgphysicsleague.org"
+                        >contact@<wbr />sgphysicsleague<wbr />.org</a
+                    >
+                    if you still have not heard from us by 1 June 2026. -->
+                    <div id="linkies">
+                        <div class="info" id="discord">
+                            <div class="info-main">
+                                <div class="info-desc">
+                                    Having trouble finding teammates? Or unclear
+                                    about how the competition works?
+                                    <br /><br />
+                                    <div>
+                                        <div class="info-img">
+                                            <a
+                                                href="https://discord.gg/VRszZ6yyGH"
+                                                target="_blank"
+                                                class="link-img"
+                                                style="display: inline-block"
+                                            >
+                                                <img src="res/discord.svg" />
+                                            </a>
+                                        </div>
+                                        We have set up a Discord server to help
+                                        you! Join at
+                                        <a
+                                            href="https://discord.gg/VRszZ6yyGH"
+                                            target="_blank"
+                                            >https://discord.gg/VRszZ6yyGH</a
+                                        >
+                                        to connect with other interested
+                                        participants and us organisers.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info" id="insta">
+                            <div
+                                class="info-main"
+                                style="width: 100%; height: 100%"
+                            >
+                                <div
+                                    class="info-desc"
+                                    style="
+                                        width: 100%;
+                                        height: 100%;
+                                        display: flex;
+                                        flex-direction: column;
+                                        justify-content: space-between;
+                                    "
+                                >
+                                    <div>We post regularly on Instagram!</div>
+                                    <div>
+                                        <div class="info-img">
+                                            <a
+                                                href="https://www.instagram.com/sgphysicsleague/"
+                                                target="_blank"
+                                                class="link-img"
+                                                style="display: inline-block"
+                                            >
+                                                <img src="res/instagram.svg" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        Follow us at
+                                        <a
+                                            href="https://www.instagram.com/sgphysicsleague/"
+                                            target="_blank"
+                                            >@sgphysicsleague</a
+                                        >
+                                        to receive the latest updates!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="info" id="faq">
+                <div class="info-header header-l">
+                    <i class="material-icons">question_answer</i>
+                    Frequently Asked Questions
+                </div>
+                <div class="info-main">
+                    <div class="sect-extra">
+                        <div class="extra-header">
+                            <div class="extra-header-text">
+                                Is this an official competition?
+                            </div>
+                        </div>
+                        <div class="extra-body">
+                            Yes! SPhL is strongly supported by the
+                            <a href="https://ipssingapore.org/" target="_blank"
+                                >Institute of Physics Singapore (IPS)</a
+                            >
+                            - the same organisation that also runs national
+                            physics competitions like SJPO, SPhO, SYPT. We are
+                            also supported by the Singapore Ministry of
+                            Education (MOE) and the
+                            <a href="https://www.sutd.edu.sg/" target="_blank"
+                                >Singapore University of Technology and Design
+                                (SUTD)</a
+                            >. We are also grateful to
+                            <a href="https://www.micron.com/" target="_blank"
+                                >Micron</a
+                            >
+                            and
+                            <a
+                                href="https://www.hudsonrivertrading.com/"
+                                target="_blank"
+                                >Hudson River Trading</a
+                            >
+                            for their sponsorship. <br /><br />
+                            All participants will also receive certificates, and
+                            some teams will win awards based on their
+                            performance.
+                        </div>
+                    </div>
+                    <div class="sect-extra">
+                        <div class="extra-header">
+                            <div class="extra-header-text">
+                                How are awards given out for SPhL Online and the
+                                SPhL Grand Finals?
+                            </div>
+                        </div>
+                        <div class="extra-body">
+                            Only teams that participate in the
+                            <b>Competitive Track</b> will be eligible for
+                            awards. Casual teams will obtain a participation
+                            certificate from the Online Round. Competitive teams
+                            may receive a certificate of participation, Honourable Mention, 
+                            and/or an invitation to participate in the Grand Finals
+                            from the Online round. 
+                            <br /><br />
+                            Teams that participate in the Grand Finals will be
+                            awarded either Honourable Mention or a Bronze, Silver, or Gold medal. 
+                            This will be based solely on their performance during the
+                            Grand Finals, and does not take their performance in
+                            the online round into account.
+                            <br /><br />
+                            All standings will also be published on our website after the Grand Finals.
+                        </div>
+                    </div>
+                    <div class="sect-extra">
+                        <div class="extra-header">
+                            <div class="extra-header-text">
+                                What should I do when I come across
+                                Google AI Overviews during my searches?
+                            </div>
+                        </div>
+                        <div class="extra-body">
+                            When researching, participants should
+                            search for relevant physics concepts
+                            or formulae rather than pasting
+                            question text wholesale into Google.
+                            <br/><br/>
+                            It is okay to use Google AI Overviews to do general
+                            research on physics concepts, but it is <b>not okay</b>
+                            to prompt it to answer SPhL questions directly. 
+                            This is a <a href="/rules#dnd" target="_blank">
+                            breach of our rules</a> 
+                            and will lead to disqualification.
+                        </div>
+                    </div>
+                    <div class="sect-extra">
+                        <div class="extra-header">
+                            <div class="extra-header-text">
+                                What information do I need to provide when
+                                registering?
+                            </div>
+                        </div>
+                        <div class="extra-body">
+                            You need to give us your team name - a moniker that
+                            uniquely identifies your team. Go for something fun,
+                            casual, or quirky! Some examples from past contests
+                            include “Sherlock Ohms”, “Newton's Apples”,
+                            “Complicated Harmonic Motion”.
+                            <br /><br />
+                            We will also need a little information about each of
+                            your team members: Name, level, school, and most
+                            importantly… email address!
+                            <b
+                                >Please provide us a working email address that
+                                you check regularly.</b
+                            >
+                            We will send out some really important information
+                            to whichever email address you give us here. We want
+                            this delivered to you - and not into a black hole.
+                        </div>
+                    </div>
+                    <div class="sect-extra">
+                        <div class="extra-header">
+                            <div class="extra-header-text">
+                                Is it better to join as a team of 3, 4, or 5?
+                            </div>
+                        </div>
+                        <div class="extra-body">
+                            We definitely encourage teams of 5. There is
+                            tremendous strategic benefit to having more members!
+                            With more hands and minds at work, more problems can
+                            be conquered, and consequently, more points scored,
+                            increasing your chances of an award.
+                            <br /><br />
+                            Besides, how often do you get such a great excuse to
+                            talk all-things-physics and “jam” with fellow
+                            physics enthusiasts? As the adage goes: the more the
+                            merrier!
+                        </div>
+                    </div>
+                    <div class="sect-extra">
+                        <div class="extra-header">
+                            <div class="extra-header-text">
+                                I cannot find enough teammates to form a team of
+                                3. Can I take part individually or as a pair?
+                            </div>
+                        </div>
+                        <div class="extra-body">
+                            You can form a team if you just get one or two more
+                            students to join!
+                            <br /><br />
+                            If you are still unable to find teammates within
+                            your school or amongst people you know, we run a
+                            Discord server for you to band together with other
+                            like-minded students looking for a team.
+                            <a
+                                href="https://discord.gg/VRszZ6yyGH"
+                                target="_blank"
+                                >Click here to join</a
+                            >
+                            - don't be shy! <br /><br />
+                            The joy of SPhL largely comes from teamwork, team
+                            spirit, team bonding. We want you to have the best
+                            experience - this is a key element of what sets SPhL
+                            apart from other competitions!
+                        </div>
+                    </div>
+                    <div class="sect-extra">
+                        <div class="extra-header">
+                            <div class="extra-header-text">
+                                My school is not aware of / has not announced
+                                this competition. How can I register?
+                            </div>
+                        </div>
+                        <div class="extra-body">
+                            Please go ahead and register directly via the
+                            registration form on our website.
+                            <br /><br />
+                            If your Physics teacher is not aware of this
+                            competition, please direct them to our website -
+                            particularly our little note for teachers linked
+                            here:
+                            <a href="#for-teachers"
+                                >sgphysicsleague.org/#for-teachers</a
+                            >
+                            <br /><br />
+                            Do drop us an email should you require additional
+                            help on this!
+                        </div>
+                    </div>
+                    <div class="sect-extra">
+                        <div class="extra-header">
+                            <div class="extra-header-text">
+                                Can my dream team comprise students from
+                                different schools? How do we register?
+                            </div>
+                        </div>
+                        <div class="extra-body">
+                            Yes, that is allowed! For additional instructions on
+                            registration for multi-school teams, please read
+                            <a href="#for-multischool-teams"
+                                >the note above titled
+                                <i
+                                    >“If your dream team comprises students from
+                                    different schools…”</i
+                                ></a
+                            >
+                        </div>
+                    </div>
+                    <div class="sect-extra">
+                        <div class="extra-header">
+                            <div class="extra-header-text">
+                                Can my dream team comprise students from
+                                different levels? How do we register?
+                            </div>
+                        </div>
+                        <div class="extra-body">
+                            This is only allowed if the categories of the
+                            different students do not conflict. For more
+                            information about this, please read
+                            <a href="#for-multilevel-teams"
+                                >the note above titled
+                                <i
+                                    >“If your dream team comprises students from
+                                    different levels…”</i
+                                ></a
+                            >
+                        </div>
+                    </div>
+                    <div class="sect-extra">
+                        <div class="extra-header">
+                            <div class="extra-header-text">
+                                Would all teams from the Junior and Senior
+                                category be eligible for the SPhL Grand Finals
+                                this year?
+                            </div>
+                        </div>
+                        <div class="extra-body">
+                            While we would love to invite everyone, logistical
+                            constraints mean that only selected teams from the
+                            Junior and Senior categories of the
+                            <b>Competitive track</b> will be eligible for the
+                            SPhL Grand Finals this year. Details will
+                            be provided closer to the date.
+                        </div>
+                    </div>
+                    <div class="sect-extra">
+                        <div class="extra-header">
+                            <div class="extra-header-text">
+                                If I am not a student currently enrolled in a
+                                secondary school or pre-university institution
+                                (Junior College, Millennia Institute,
+                                Polytechnic, ITE or equivalent), can I take
+                                part?
+                            </div>
+                        </div>
+                        <div class="extra-body">
+                            Yes! We are opening our Casual Track to everyone,
+                            including alumni, teachers, and other non-students.
+                            However, you will not be able to participate in the
+                            Competitive Track or be eligible for awards.
+                        </div>
+                    </div>
+                    <div class="sect-extra">
+                        <div class="extra-header">
+                            <div class="extra-header-text">
+                                If I'm from an overseas pre-university
+                                institution, can I still join SPhL?
+                            </div>
+                        </div>
+                        <div class="extra-body">
+                            Absolutely! However, please note that any team with
+                            at least one overseas member can only participate in the 
+                            Casual Track.
+                            <br /><br />
+                            This means the team is not eligible for SPhL Grand Finals 
+                            or any other awards.
+                            Nevertheless, we encourage you to give it your best
+                            shot and enjoy solving our Online Round physics problems 
+                            with your team!
+                        </div>
+                    </div>
+                </div>
+                <div class="info-footer header-xs">
+                    <i class="material-icons">contact_support</i>
+                    <div>
+                        Should you have queries about <i>any</i> aspect of SPhL,
+                        please do not hesitate to ask:<br /><i
+                            class="material-icons inline-icons"
+                            style="color: var(--pri)"
+                            >discord</i
+                        >
+                        <a href="https://discord.gg/VRszZ6yyGH" target="_blank"
+                            >Discord</a
+                        >
+                        |
+                        <i
+                            class="material-icons inline-icons"
+                            style="color: var(--pri)"
+                            >email</i
+                        >
+                        <a href="/cdn-cgi/l/email-protection#690a06071d080a1d291a0e1901101a000a1a050c080e1c0c47061b0e">contact@<wbr />sgphysicsleague<wbr />.org</a
+                        >
+                    </div>
+                </div>
+            </section>
+            <section class="info" id="about">
+                <div class="info-header header-l">
+                    <img src="res/logo_complete.png" /> The Organising Team
+                </div>
+                <div class="info-main">
+                    <div>
+                        We are a passionate group of youths who have enjoyed
+                        various physics olympiads and tournaments back in our
+                        school days. We are excited to organise SPhL as a novel
+                        way to inspire interest in physics, and to promote
+                        lively discussion of physics. Most of all, we want
+                        students to enjoy the process of thinking about and
+                        talking about challenging physics puzzles.
+
+                        <br /><br />
+                        <div class="font-s about-highlight">
+                            <i class="material-icons about-highlight-icon"
+                                >diversity_3</i
+                            >
+                            <div>
+                                Learn more about our team and our story over at
+                                <a href="/about" target="_blank">About Us</a>.
+                            </div>
+                        </div>
+                        <br />
+                        SPhL is supported by the
+                        <a href="https://ipssingapore.org/" target="_blank"
+                            >Institute of Physics Singapore (IPS)</a
+                        >
+                        and the Singapore Ministry of Education (MOE). We are
+                        also grateful to
+                        <a href="https://www.micron.com/" target="_blank"
+                            >Micron</a
+                        >
+                        and
+                        <a
+                            href="https://www.hudsonrivertrading.com/"
+                            target="_blank"
+                            >Hudson River Trading</a
+                        >
+                        for their sponsorship and to the
+                        <a href="https://www.sutd.edu.sg/" target="_blank"
+                            >Singapore University of Technology and Design
+                            (SUTD)</a
+                        >
+                        for co-organising our first-ever physical event, the
+                        SPhL Grand Finals.
+                    </div>
+                </div>
+                <div class="about-sponsors">
+                    <a
+                        href="https://ipssingapore.org/"
+                        target="_blank"
+                        class="link-img"
+                    >
+                        <img id="about_sponsor_ips" src="res/ips_logo.svg" />
+                    </a>
+                    <a
+                        href="https://www.micron.com/"
+                        target="_blank"
+                        class="link-img"
+                    >
+                        <img
+                            id="about_sponsor_micron"
+                            src="res/micron_logo.png"
+                        />
+                    </a>
+                    <a
+                        href="https://www.sutd.edu.sg/"
+                        target="_blank"
+                        class="link-img"
+                    >
+                        <img id="about_sponsor_sutd" src="res/sutd_logo.png" />
+                    </a>
+                    <a
+                        href="https://www.hudsonrivertrading.com/"
+                        target="_blank"
+                        class="link-img"
+                    >
+                        <img id="about_sponsor_hrt" src="res/HRTLogo.png" />
+                    </a>
+                </div>
+                <div class="info-main">
+                    <div>
+                        This competition was originally inspired by the
+                        <a href="https://physicsbrawl.org/" target="_blank"
+                            >Online Physics Brawl</a
+                        >
+                        organised by FYKOS. If you enjoy SPhL, you would
+                        probably love solving Online Physics Brawl problems too. 
+                        Sadly, they have recently announced the end of their online 
+                        competition, but we are grateful for their contribution 
+                        to the physics community. 
+                        <br /><br />
+                        While we are not directly associated with them, do also
+                        check out the
+                        <a href="https://sginfoleague.org/" target="_blank"
+                            >Singapore Informatics League</a
+                        >,
+                        <a href="https://www.sgchemleague.org/" target="_blank"
+                            >Singapore Chemistry League</a
+                        >,
+                        <a href="https://www.sgbioleague.org/" target="_blank"
+                            >Singapore Biology League</a
+                        > and the 
+                        <a href="https://sglinguisticsleague.org/" target="_blank"
+                            >Singapore Linguistics League</a
+                        > 
+                        if you are interested in other competitions similar to
+                        ours!
+                    </div>
+                </div>
+            </section>
+        </main>
+        <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript">
+            function updateTimer() {
+                let now_timestamp = Date.now();
+                let diff = (registrationDeadline - now_timestamp) / 1000;
+                // calculating the days, hours, mins, and secs till start of conpetition
+                let days = Math.max(Math.floor(diff / (60 * 60 * 24)), 0);
+                diff %= 60 * 60 * 24;
+                let hours = Math.max(Math.floor(diff / (60 * 60)), 0);
+                diff %= 60 * 60;
+                let mins = Math.max(Math.floor(diff / 60), 0);
+                diff %= 60;
+                let secs = Math.max(Math.floor(diff), 0);
+                // updating html
+                $("#timer_days").html(days);
+                $("#timer_hours").html(hours);
+                $("#timer_mins").html(mins);
+                $("#timer_secs").html(secs);
+            }
+
+            $(document).ready(function () {
+                initDisplay();
+                highlightTopbarItem("");
+
+                if (isRegistration && new Date() < registrationDeadline) {
+                    $(".splash-text").append(`
+                        <div style="flex:1">
+                            <div id="timer_container">
+                                <div id="timer">
+                                    <div class="timer-item">
+                                        <span
+                                            class="font-l timer-number"
+                                            id="timer_days"
+                                        ></span>
+                                        days
+                                    </div>
+                                    <div class="timer-item">
+                                        <span
+                                            class="font-l timer-number"
+                                            id="timer_hours"
+                                        ></span>
+                                        hours
+                                    </div>
+                                    <div class="timer-item">
+                                        <span
+                                            class="font-l timer-number"
+                                            id="timer_mins"
+                                        ></span>
+                                        minutes
+                                    </div>
+                                    <div class="timer-item">
+                                        <span
+                                            class="font-l timer-number"
+                                            id="timer_secs"
+                                        ></span>
+                                        seconds
+                                    </div>
+                                </div>
+                                <span class="font-xs"><b>left to register!</b></span>
+                                <div class="splash-desc header-s" style="text-align: inherit;">
+                                    <a href="/registration" id="register_btn_a">
+                                        <button id="register_btn"
+                                            href="/registration"
+                                            class="btn-pri btn-inline">
+                                            Register Now →
+                                        </button>
+                                    </a>
+                                    <!-- <a href="/registration" style="background-color: var(--sec); color:white; text-decoration:underline; border-radius: 10px;">Register Now →</a> -->
+                                </div>
+                            </div>
+                        </div>
+                    `);
+
+                    updateTimer();
+                    setInterval(updateTimer, 1000);
+                }
+
+                // TODO: Get and display index message
+                // api.getIndexMessage().then((data) => {
+                //     if (data.message != null && data.message !== "") {
+                //         statusMessage({
+                //             message: data.message,
+                //             color: "affirm",
+                //             has_timeout: false,
+                //             has_fade: false,
+                //             icon: "campaign",
+                //             scroll_into_view: false,
+                //         });
+                //         processHashes()
+                //     }
+                // })
+
+                statusMessage({
+                    message: `MAJOR ANNOUNCEMENT - In light of the disqualifications over usage of Generative AI tools in SPhL 2026, we have released an investigation report. Read the report <a href="/ai-statement-2026">here</a>.`,
+                    color: "danger",
+                    has_timeout: false,
+                    has_fade: false,
+                    icon: "campaign",
+                    scroll_into_view: false,
+                    target_container: $("#announcementContainer"),
+                });
+
+                // Animating the background for the splash
+                const imageLink = "res/splash.png";
+                const imageOrigWidth = 6246; // width of raw image file
+                const imageOrigHeight = 900; // height of raw image file
+                const animationSpeed = 25; // pixels to traverse per second
+                const containerWidth = $("#main-splash-bg")
+                    .parent()
+                    .innerWidth();
+                const containerHeight = $("#main-splash-bg")
+                    .parent()
+                    .innerHeight();
+                const imageHeight = containerHeight; // actual height of image is scaled to container's height
+                const imageWidth =
+                    (imageOrigWidth * imageHeight) / imageOrigHeight; // actual width of image, based on scaling of image height
+
+                $("#main-splash-bg").css({
+                    "background-image": 'url("' + imageLink + '")',
+                    "background-size": "auto 100%",
+                    "background-repeat": "repeat",
+                    height: "100%",
+                    width: 5 * imageWidth + "px", // show exactly 5 iterations of the image (more than 2 in order to account for big screens)
+
+                    position: "absolute",
+                    top: 0,
+                    left: -imageWidth + "px", // at the start of each animation cycle, left of the 2nd iteration of image should exactly align with left of container (2nd iteration because each animation cycle only traverses 1 image)
+
+                    "animation-name": "BGAnimation",
+                    "animation-timing-function": "linear",
+                    "animation-iteration-count": "infinite",
+                    "animation-duration": imageWidth / animationSpeed + "s", // specifies number of seconds for one background to be traversed. no. of pixels traversed per second = animationSpeed; so no. of seconds to traverse the background is one image width divided by that.
+                });
+
+                // adding icons to the 'sect-extra' headers
+                const $extraIcon = $(
+                    `<i class="material-icons extra-header-icon">help</i>`
+                );
+                const $extraArrow = $(
+                    `<i class="material-icons extra-header-arrow">expand_more</i>`
+                );
+                $("#faq .sect-extra .extra-header").prepend($extraIcon);
+                $(".sect-extra .extra-header").append($extraArrow);
+                // custom icons for register section
+                $(".register_extra_sec.extra-header").prepend(
+                    `<i class="material-icons extra-header-icon">warning</i>`
+                );
+                $(
+                    "#register .sect-extra:not(.register_extra_sec) .extra-header"
+                ).prepend(
+                    `<i class="material-icons extra-header-icon">info</i>`
+                );
+                // click for extra info
+                /*
+				$target: the target element. In this case, an '.extra-header' element
+				state (optional): 0 indicates to close, 1 indicates to expand. Otherwise, toggle
+				complete (optional): nullary callback function once animation is complete
+			*/
+                const toggleExtra = (
+                    $target,
+                    state = -1,
+                    complete = () => {}
+                ) => {
+                    const $parent = $target.parent(),
+                        $arrow = $target.find(".extra-header-arrow");
+                    const isExpanded = $parent.hasClass("extra-expand");
+                    if (
+                        (isExpanded && state == 1) ||
+                        (!isExpanded && state == 0)
+                    ) {
+                        complete();
+                        return;
+                    }
+                    if (isExpanded) {
+                        $parent.removeClass("extra-expand");
+                        $arrow.html("expand_more");
+                    } else {
+                        $parent.addClass("extra-expand");
+                        $arrow.html("expand_less");
+                    }
+                    $target.siblings(".extra-body").slideToggle(complete);
+                };
+                $(".extra-header").on("click", function () {
+                    toggleExtra($(this));
+                });
+
+                // confetti
+                let confettiCnt = 0;
+
+                const generateConfetti = () => {
+                    if (confettiCnt >= 5) {
+                        confettiCnt = 0;
+                        return;
+                    }
+                    confetti({
+                        startVelocity: 30,
+                        spread: 360,
+                        ticks: 60,
+                        zIndex: 100,
+                        particleCount: 150,
+                        origin: {
+                            x: Math.random() * (0.7 - 0.3) + 0.3,
+                            y: Math.random() * (0.7 - 0.3) + 0.3,
+                        },
+                    });
+                    confettiCnt++;
+                    setTimeout(generateConfetti, 300);
+                };
+                $("#confetti_btn").on("click", function () {
+                    if (confettiCnt == 0) generateConfetti();
+                });
+
+                checkWindowHash = (hash_id) => {
+                    if (window.location.hash != hash_id) return;
+                    const $extraHeader = $(hash_id + "-target").find(
+                        ".extra-header"
+                    );
+                    toggleExtra($extraHeader, 1, () =>
+                        $extraHeader.get(0).scrollIntoView({
+                            block: "center",
+                            behavior: "smooth",
+                        })
+                    );
+                };
+                const processHashes = () => {
+                    // WINDOW HASHES
+                    const hashIdArr = [
+                        "#for-teachers",
+                        "#for-multischool-teams",
+                        "#for-multilevel-teams",
+                        "#for-sjpo",
+                    ];
+                    for (let hashId of hashIdArr) {
+                        checkWindowHash(hashId);
+                        ((x) => {
+                            $(`a[href="${x}"]`).on("click", () => {
+                                window.location.hash = x;
+                                checkWindowHash(x);
+                            });
+                        })(hashId);
+                    }
+                };
+                processHashes();
+            });
+        </script>
+    <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"a84fb17ea17b405fad92c1b4e2bdfb0d","r":1,"spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>

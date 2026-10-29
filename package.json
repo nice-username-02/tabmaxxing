@@ -1,0 +1,31 @@
+{
+  "name": "tabmaxxing",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nice-username-02/tabmaxxing.git"
+  },
+  "homepage": "https://github.com/nice-username-02/tabmaxxing#readme",
+  "bugs": {
+    "url": "https://github.com/nice-username-02/tabmaxxing/issues"
+  },
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/calendar.test.js tests/background.test.js tests/note-export.test.js",
+    "build": "node build.mjs"
+  },
+  "dependencies": {
+    "@codemirror/commands": "^6.11.1",
+    "@codemirror/lang-markdown": "^6.5.2",
+    "@codemirror/language": "^6.13.1",
+    "@codemirror/state": "^6.7.6",
+    "@codemirror/view": "^6.43.15",
+    "@emoji-mart/data": "^1.2.1",
+    "@lezer/markdown": "^1.8.1",
+    "codemirror": "^6.0.2",
+    "linkify-it": "^6.1.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2"
+  }
+}

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>New Tab</title>
+<link rel="icon" type="image/png" sizes="32x32" href="icons/icon32.png">
+<link rel="stylesheet" href="editor.css">
+<link rel="stylesheet" href="themes.css">
+
+<div id="background-layer" aria-hidden="true"><div id="background-video"></div><div id="background-shade"></div></div>
+<div id="calbar">
+  <div id="background-controls" role="group" aria-label="Background player" hidden>
+    <button id="background-play" type="button" aria-label="Pause background" title="Pause background" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path class="player-play-icon" d="m8 5 11 7-11 7Z" fill="currentColor" stroke="none"/><path class="player-pause-icon" d="M8 6v12M16 6v12" stroke-width="3"/></svg></button>
+    <button id="background-mute" type="button" aria-label="Unmute background" title="Unmute background" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4Z"/><path class="player-muted-icon" d="m16 9 5 6m0-6-5 6"/><path class="player-sound-icon" d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></svg></button>
+    <input id="background-volume" type="range" min="0" max="100" value="0" aria-label="Background volume" title="Volume">
+    <input id="background-seek" type="range" min="0" max="1" step="1" value="0" aria-label="Video progress" title="Seek in video" disabled>
+    <span id="background-time">0:00 / –:––</span>
+    <select id="background-quality" aria-label="Video quality" title="Video quality" disabled><option value="">Quality</option></select>
+    <span id="background-quality-status" role="status"></span>
+  </div>
+  <span id="caltext"></span>
+  <button id="hidebtn" title="Hide all text" aria-label="Hide all text">
+  <svg id="eyeopen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
+  <svg id="eyeshut" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/><line x1="4" y1="4" x2="20" y2="20"/></svg>
+</button>
+  <button id="workspacesettingsbtn" title="Settings" aria-label="Workspace settings">⚙</button>
+</div>
+
+
+
+
+<aside id="agenda" aria-label="Upcoming events" hidden>
+  <div class="agenda-header"><button class="panel-grip" type="button" aria-label="Move calendar panel" title="Drag to move · Arrow keys to nudge">⠿ <span>Calendar</span></button><button id="calrefresh" title="Refresh calendars" aria-label="Refresh calendars">&#8635;</button></div>
+  <div id="agendadays"></div>
+  <p id="agendanote" role="status"></p><button id="calmore">Load more days</button>
+</aside>
+
+<div id="wrap">
+  <main id="workspace"><div class="notes-panel-heading"><button class="panel-grip" type="button" aria-label="Move notes panel" title="Drag to move · Arrow keys to nudge">⠿ <span>Notes</span></button></div>
+    <div class="workspace-toolbar"><div id="notetabs" role="tablist" aria-label="Notebooks"></div><button id="addtab" title="Add note tab" aria-label="Add note tab">+</button></div>
+<span id="savestatus" role="status" class="save-indicator">Saved locally</span>
+    <div id="pad"></div>
+  </main>
+</div>
+<dialog id="tabsettings">
+  <form id="tabform">
+    <h2>Customise tab</h2>
+    <label for="tabemoji">Emoji icon</label><input id="tabemoji" maxlength="24" placeholder="📝">
+    <label for="emojisearch">Emoji keyboard</label><input id="emojisearch" type="search" placeholder="Search all emoji, e.g. rocket"><div class="emoji-controls"><select id="emojicategory" aria-label="Emoji category"><option value="all">All categories</option></select><select id="emojitone" aria-label="Emoji skin tone"><option value="0">Default skin tone</option><option value="1">🏻 Light</option><option value="2">🏼 Medium-light</option><option value="3">🏽 Medium</option><option value="4">🏾 Medium-dark</option><option value="5">🏿 Dark</option></select></div><div id="emojikeyboard" aria-label="Emoji keyboard"></div><label for="tabname">Name</label><input id="tabname" maxlength="60" required>
+
+    <div class="dialog-actions"><button id="deletetab" type="button" class="danger">Delete tab</button><button id="closetabsettings" type="button">Cancel</button><button type="submit">Save</button></div>
+  </form>
+</dialog>
+
+<dialog id="workspacesettings"><h2>Settings</h2><div class="editor-settings"><label for="editor-mode">Editor mode</label><select id="editor-mode"><option value="live">Live preview</option><option value="source">Markdown source</option></select></div><fieldset id="note-export-settings"><legend>Markdown backups</legend><label class="export-toggle"><input id="autoexport" type="checkbox"> Automatically export notes as .md</label><p id="export-location">No folder selected</p><div class="export-actions"><button id="export-choose" type="button">Choose folder…</button><button id="export-update" type="button" disabled>Update backup</button><button id="export-allow" type="button" hidden>Allow folder access</button></div><p id="export-status" role="status" aria-live="polite">Last updated: Never</p><p id="export-error" role="status" aria-live="polite"></p></fieldset><fieldset id="appearance"><legend>Appearance</legend><label for="appearance-mode">Mode</label><select id="appearance-mode"><option value="system">Follow system</option><option value="light">Light</option><option value="dark">Dark</option></select><label for="light-scheme">Light colour scheme</label><select id="light-scheme"></select><label for="dark-scheme">Dark colour scheme</label><select id="dark-scheme"></select><div id="theme-preview" role="img"><span style="background:var(--bg)"></span><span style="background:var(--panel)"></span><span style="background:var(--fg)"></span><span style="background:var(--accent)"></span></div></fieldset><section id="background-settings"><h3>Background</h3><div class="background-modes"><label><input id="background-solid" name="background-mode" type="radio" checked> Solid colour</label><label><input id="background-custom" name="background-mode" type="radio"> Custom backgrounds</label></div><div id="background-video-options" hidden><p id="background-name">Solid colour</p><label for="background-category">Browse scenes</label><select id="background-category"></select><div id="background-gallery"></div><form id="background-custom-form"><label for="background-url">Your own YouTube video</label><div class="background-url-row"><input id="background-url" type="text" placeholder="Paste a YouTube link" autocomplete="off"><button type="submit">Use video</button></div><p id="background-error" role="alert"></p></form><label for="panel-opacity">Panel opacity <output id="panel-opacity-value">85%</output></label><input id="panel-opacity" type="range" min="0" max="100" value="85"><label for="background-blur">Panel blur <output id="background-blur-value">0px</output></label><input id="background-blur" type="range" min="0" max="12" value="0"><p id="background-credit"></p><p id="background-status" role="status"></p><a id="background-watch" target="_blank" rel="noopener noreferrer" hidden>Watch on YouTube ↗</a><button id="reset-panels" type="button">Reset panel positions</button></div></section><section id="calendarsettings"><h3>Calendars</h3>
+  <label for="calurl">Your calendars</label>
+  <textarea id="calurl" rows="4" spellcheck="false" placeholder="Paste your Google Calendar secret iCal URLs, one per line"></textarea>
+  <button id="calsave">Save calendars</button>
+
+  <p id="calerror" role="alert"></p>
+  <p class="hint">Google Calendar &rarr; Settings &rarr; each calendar &rarr; "Secret address in iCal format". One URL per line. Leave empty to hide.</p>
+  <p class="hint">These links give access to your calendars. They stay in this browser profile.</p>
+</section><button id="closeworkspacesettings">Close</button></dialog>
+<script type="module" src="editor.js"></script>
+<script src="privacy.js"></script>
+<script type="module" src="cal.js"></script>
+</html>
