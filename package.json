@@ -1,17 +1,9 @@
 {
   "name": "tabmaxxing",
   "private": true,
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nice-username-02/tabmaxxing.git"
-  },
-  "homepage": "https://github.com/nice-username-02/tabmaxxing#readme",
-  "bugs": {
-    "url": "https://github.com/nice-username-02/tabmaxxing/issues"
-  },
   "type": "module",
   "scripts": {
-    "test": "node --test tests/calendar.test.js tests/background.test.js tests/note-export.test.js",
+    "test": "node --test tests/calendar.test.js tests/background.test.js tests/note-export.test.js tests/note-import.test.js",
     "build": "node build.mjs"
   },
   "dependencies": {

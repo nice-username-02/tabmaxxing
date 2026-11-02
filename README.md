@@ -17,10 +17,12 @@ Keep the extracted folder in place while the extension is installed. If another 
 
 ## Get started
 
-- **Notes:** type to save automatically. Use **+** to add another note tab. Markdown headings, lists, links, and checkboxes are supported.
+- **Notes:** type to save automatically. Use **+** to add another note tab. Markdown headings, lists, links, and checkboxes are supported. The last viewed note tab opens at startup.
 - **Appearance:** click the gear in the top-right corner to choose themes and optional video backgrounds.
 - **Privacy:** click the eye icon to hide workspace text while screen sharing.
 - **Backups:** in **Settings → Markdown backups**, choose a folder, then enable automatic exports or click **Update backup**. Backups are off by default.
+
+- **Import notes:** below Markdown backups in Settings, click **Import folder…**. Markdown and text files (including subfolders) are added as new tabs without replacing existing notes.
 
 ## Add Google Calendar events (optional)
 
@@ -45,7 +47,7 @@ pnpm install --frozen-lockfile
 pnpm build
 ```
 
-Run the regression tests with `pnpm test` or `node --test tests/calendar.test.js tests/background.test.js tests/note-export.test.js`.
+Run the regression tests with `pnpm test` or `node --test tests/calendar.test.js tests/background.test.js tests/note-export.test.js tests/note-import.test.js`.
 
 ## Privacy and third-party notices
 

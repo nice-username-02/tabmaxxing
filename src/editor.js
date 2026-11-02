@@ -8,6 +8,7 @@ import { initAppearance } from './appearance.js';
 import { initBackground } from './background.js';
 import { initPanels } from './panels.js';
 import { initNoteExportSettings } from './note-export-settings.js';
+import { readNoteFiles, initNoteImportSettings } from './note-import.js';
 import emojiData from '@emoji-mart/data';
 import { LinkifyIt } from 'linkify-it';
 
@@ -206,7 +207,7 @@ async function selectTab(id) {
   await flush();
   if (editor) states.set(active, editor.state);
   active = id;
-  sessionStorage.setItem('workspace-active-tab', id);
+  await write({workspaceActiveTab: id});
   const stored = await read({['note:' + id]: ''});
   loading = true;
   let state = states.get(id);
@@ -350,14 +351,26 @@ await initNoteExportSettings();
 window.addEventListener('blur', flush);
 window.addEventListener('pagehide', flush);
 document.addEventListener('visibilitychange', flush);
-const initial = await read({workspaceTabs: null, notes: '', editorMode: 'live'});
+const initial = await read({workspaceTabs: null, workspaceActiveTab: null, notes: '', editorMode: 'live'});
 applyEditorMode(initial.editorMode);
 tabs = initial.workspaceTabs;
 if (!tabs?.length) {
   tabs = [{id: 'original', name: 'Notes', emoji: '📝'}];
   await write({workspaceTabs: tabs, 'note:original': initial.notes});
 }
-await selectTab(tabs.some(t => t.id === sessionStorage.getItem('workspace-active-tab')) ? sessionStorage.getItem('workspace-active-tab') : tabs[0].id);
+await selectTab(tabs.some(t => t.id === initial.workspaceActiveTab) ? initial.workspaceActiveTab : tabs[0].id);
+initNoteImportSettings(async files => {
+  const notes = await readNoteFiles(files);
+  if (!notes.length) return 0;
+  await flush();
+  const current = await read({workspaceTabs: tabs});
+  const changes = {workspaceTabs: [...current.workspaceTabs, ...notes.map(note => note.tab)]};
+  for (const {tab, text} of notes) changes['note:' + tab.id] = text;
+  await write(changes);
+  tabs = changes.workspaceTabs;
+  renderTabs();
+  return notes.length;
+});
 chrome.storage.onChanged.addListener((changes, area) => {
   if (area !== 'local') return;
   if (changes.editorMode) applyEditorMode(changes.editorMode.newValue);

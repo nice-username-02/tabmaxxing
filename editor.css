@@ -447,9 +447,9 @@ body.popup #calbar { padding-top: 10px; min-height: 26px; }
 body dialog, body.has-video-background dialog { background: var(--panel); backdrop-filter: none; opacity: 1; }
 .editor-settings { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 8px 12px; align-items: center; padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid var(--border); }
 .editor-settings label { grid-column: 1/-1; font-size: 12px; color: var(--dim); }
-#note-export-settings { min-width: 0; margin: 0 0 20px; padding: 0 0 20px; border: 0; border-bottom: 1px solid var(--border); }
-#note-export-settings legend { font-size: 13px; font-weight: 600; padding: 0 0 14px; }
-#note-export-settings p { margin: 10px 0; }
+#note-export-settings, #note-import-settings { min-width: 0; margin: 0 0 20px; padding: 0 0 20px; border: 0; border-bottom: 1px solid var(--border); }
+#note-export-settings legend, #note-import-settings legend { font-size: 13px; font-weight: 600; padding: 0 0 14px; }
+#note-export-settings p, #note-import-settings p { margin: 10px 0; }
 .export-toggle { display: flex; align-items: center; gap: 8px; font-size: 13px; }
 .export-actions { display: flex; flex-wrap: wrap; gap: 8px; }
 #export-location { overflow-wrap: anywhere; font-size: 12px; color: var(--dim); }
@@ -460,3 +460,5 @@ body dialog, body.has-video-background dialog { background: var(--panel); backdr
 .cm-content input.md-checkbox:checked { background: var(--accent); border-color: var(--accent); }
 .cm-content input.md-checkbox:checked::after { content: ''; position: absolute; left: 3px; top: 0px; width: 4px; height: 8px; border: solid #fff; border-width: 0 1.7px 1.7px 0; transform: rotate(45deg); }
 .cm-content input.md-checkbox:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+#note-import-settings p { font-size: 12px; color: var(--dim); overflow-wrap: anywhere; }
